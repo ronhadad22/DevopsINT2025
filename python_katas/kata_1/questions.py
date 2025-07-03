@@ -15,55 +15,42 @@ def sum_of_element(elements):
     return sum
 
 def verbing(word):
-    """
-    1 Kata
+    lengh = len(word)
+    if lengh >= 3:
+        if word [-3:] == 'ing':
+            word += 'ly'
+        else:
+            word += 'ing'
+    return word
 
-    Given a string 'word', if its length is at least 3, add 'ing' to its end.
-    Unless it already ends in 'ing', in which case add 'ly' instead.
-    If the string length is less than 3, leave it unchanged.
-
-    e.g.
-    teach -> teaching
-    do -> do
-    swimming -> swimmingly
-
-    :param word: str
-    :return: Return the resulting string.
-    """
-    return None
 
 
 def words_concatenation(words):
-    """
-    1 Kata
+    sentence = ''
+    for i in words:
+        sentence += i + ' ' 
+    return sentence
 
-    Given a list of words, write a program that concatenates the words.
-
-    For example:
-    words_concatenation(['take', 'me', 'home']) returns 'take me home'
-
-    :param words: list of str
-    :return: Return the resulting string.
-    """
-    return None
+   
 
 
 def reverse_words_concatenation(words):
-    """
-    1 Kata
+    sentence = ''
+    for i in words:
+        sentence = ' ' + i + sentence
+    return sentence
 
-    Given a list of words, write a program that concatenates the words in a reverse way
-
-    For example:
-    reverse_words_concatenation(['take', 'me', 'home']) returns 'home me take'
-
-    :param words: list of str
-    :return: Return the resulting string.
-    """
-    return None
 
 
 def is_unique_string(some_str):
+    a = set()
+    for i in some_str:
+        if i in a:
+            return False
+        else:
+            a.add(i)
+    return True
+
     """
     2 Kata
 
@@ -293,25 +280,24 @@ def sum_of_digits(digits_str):
 
 if __name__ == '__main__':
 
-    print('\nsum_of_element:\n--------------------')
-    print(sum_of_element([1, 2]))
-    print(sum_of_element([1, 3]))
+    #print(sum_of_element([1, 2]))
+    #print(sum_of_element([1, 3]))
     # print(sum_of_element([4, 5, 6]))
     #
-    # print('\nverbing:\n--------------------')
-    # print(verbing('walk'))
-    # print(verbing('swimming'))
-    # print(verbing('do'))
+    print('\nverbing:\n--------------------')
+    print(verbing('walk'))
+    print(verbing('swimming'))
+    print(verbing('do'))
     #
-    # print('\nwords_concatenation:\n--------------------')
-    # print(words_concatenation(['take', 'me', 'home']))
+    print('\nwords_concatenation:\n--------------------')
+    print(words_concatenation(['take', 'me', 'home']))
     #
-    # print('\nreverse_words_concatenation:\n--------------------')
-    # print(reverse_words_concatenation(['take', 'me', 'home']))
+    print('\nreverse_words_concatenation:\n--------------------')
+    print(reverse_words_concatenation(['take', 'me', 'home']))
     #
-    # print('\nis_unique_string:\n--------------------')
-    # print(is_unique_string('aasdssdsederd'))
-    # print(is_unique_string('12345tgbnh'))
+    print('\nis_unique_string:\n--------------------')
+    print(is_unique_string('aasdssdsederd'))
+    print(is_unique_string('12345tgbnh'))
     #
     # print('\nlist_diff:\n--------------------')
     # print(list_diff([1, 2, 3, 8, 77, 0]))
