@@ -8,9 +8,8 @@ def sum_of_element(elements):
     # elements=[1,2]
     sum=0
 
-    for moshe in elements:
-        print(moshe)
-        sum=sum+moshe
+    for i in elements:
+        sum=sum+i
 
     return sum
 
@@ -51,20 +50,6 @@ def is_unique_string(some_str):
             a.add(i)
     return True
 
-    """
-    2 Kata
-
-    Given a string, the function returns True if all characters in the string are unique, False otherwise
-
-    e.g
-    'abcd' -> True
-    'aaabcd' -> False
-    '' -> True      (empty string)
-
-    :param some_str:
-    :return: bool
-    """
-    return None
 
 
 def list_diff(elements):
@@ -280,9 +265,9 @@ def sum_of_digits(digits_str):
 
 if __name__ == '__main__':
 
-    #print(sum_of_element([1, 2]))
-    #print(sum_of_element([1, 3]))
-    # print(sum_of_element([4, 5, 6]))
+    print(sum_of_element([1, 2]))
+    print(sum_of_element([1, 3]))
+    print(sum_of_element([4, 5, 6]))
     #
     print('\nverbing:\n--------------------')
     print(verbing('walk'))
