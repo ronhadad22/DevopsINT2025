@@ -53,50 +53,38 @@ def is_unique_string(some_str):
 
 
 def list_diff(elements):
-    """
-    1 Kata
-
-    Given a list of integers as an input, return the "diff" list - each element is
-    reduces by its previous one. The first element should be None
-
-    e.g.
-    [1, 2, 3, 4, 7, 11] -> [None, 1, 1, 1, 3, 4]
-    [] -> []
-    [1, 5, 0, 4, 1, 1, 1] -> [None, 4, -5, 4, -3, 0, 0]
-
-    :param elements: list of integers
-    :return: the diff list
-    """
-    return None
+    diff = [None]
+    previous_num=elements[0]
+    for i in elements:
+        if i == elements[0]:
+            continue
+        diff.append(i-previous_num)
+        previous_num=i
+    return diff
 
 
 def prime_number(num):
-    """
-    1 Kata
-
-    Check if the given number is prime or not.
-
-    hint: use the built-in function "range"
-    :param num: the number to check
-    :return: bool. True if prime, else False
-    """
-    return None
+    prime_check=list(range(2,num))
+    for i in prime_check:
+        if num%i==0:
+            return False
+    return True
 
 
 def palindrome_num(num):
-    """
-    1 Kata
-
-    Check whether a number is palindrome or not
-
-    e.g.
-    1441 -> True
-    123 -> False
-
-    :param num: int
-    :return: bool. True is palindrome, else False
-    """
-    return None
+    list_num=list(str(num))
+    half=len(list_num)//2
+    if len(list_num)%2==0:
+        first_half=list_num[:half]
+        second_half=list_num[half:]
+    else:
+        first_half=list_num[:half]
+        second_half=list_num[(half+1):]
+    second_half.reverse()
+    if first_half==second_half:
+        return True
+    else:
+        return False
 
 
 def pair_match(men, women):
@@ -284,16 +272,18 @@ if __name__ == '__main__':
     print(is_unique_string('aasdssdsederd'))
     print(is_unique_string('12345tgbnh'))
     #
-    # print('\nlist_diff:\n--------------------')
-    # print(list_diff([1, 2, 3, 8, 77, 0]))
+    print('\nlist_diff:\n--------------------')
+    print(list_diff([1, 2, 3, 8, 77, 0]))
     #
-    # print('\nprime_number:\n--------------------')
-    # print(prime_number(5))
-    # print(prime_number(22))
+    print('\nprime_number:\n--------------------')
+    print(prime_number(5))
+    print(prime_number(22))
+
     #
-    # print('\npalindrome_num:\n--------------------')
-    # print(palindrome_num(12221))
-    # print(palindrome_num(577))
+    print('\npalindrome_num:\n--------------------')
+    print(palindrome_num(12221))
+    print(palindrome_num(577))
+
     #
     # print('\npair_match:\n--------------------')
     # print(pair_match(
