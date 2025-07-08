@@ -88,167 +88,84 @@ def palindrome_num(num):
 
 
 def pair_match(men, women):
-    """
-    3 Kata
+    men_dict=dict(men)
+    women_dict=dict(women)
+    min_diff=float('inf')
+    match=()
+    for name_men, age_men in men_dict.items():
+        for name_women, age_women in women_dict.items():
+             if abs(age_men-age_women)<min_diff:
+                 min_diff=abs(age_men-age_women)
+                 match=(name_men,name_women)
+    return match
 
-    This function gets two dictionaries of the type:
-    {
-        "<name>": <age>
-    }
-
-    Where <name> is a string name, and <age> is an integer representing the age
-    The function returns a pair of names (tuple), of from men dict, the other from women dict,
-    where their absolute age differences is the minimal
-
-    e.g.
-    men = {"John": 20, "Abraham": 45}
-    women = {"July": 18, "Kim": 26}
-
-    The returned value should be a tuple ("John", "July") since:
-
-    abs(John - Kim) = abs(20 - 26) = abs(-6) = 6
-    abs(John - July) = abs(20 - 18) = abs(2) = 2
-    abs(Abraham - Kim) = abs(45 - 26) = abs(19) = 19
-    abs(Abraham - July) = abs(45 - 18) = abs(27) = 27
-
-    :param men: dict mapping name -> age
-    :param women: dict mapping name -> age
-    :return: tuple (men_name, women_name) such their age absolute difference is the minimal
-    """
-    return None
 
 
 def bad_average(a, b, c):
-    """
-    1 Kata
-
-    This function gets 3 numbers and calculates the average.
-    There is a mistake in the following implementation, you are required to fix it
-
-    :return:
-    """
-    return a + b + c / 3
+    return (a + b + c) / 3
 
 
 def best_student(grades):
-    """
-    1 Kata
-
-    This function gets a dict of students -> grades mapping, and returns the student with the highest grade
-
-    e.g.
-    {
-        "Ben": 78,
-        "Hen": 88,
-        "Natan": 99,
-        "Efraim": 65,
-        "Rachel": 95
-    }
-
-    will return "Natan"
-
-    :param grades: dict of name -> grade mapping
-    :return: str. some key from the dict
-    """
-    return None
-
+    max_grade=0
+    best_student=''
+    for name in grades:
+        if grades[name]>max_grade:
+            max_grade=grades[name]
+            best_student=name
+    return best_student
 
 def print_dict_as_table(some_dict):
-    """
-    1 Kata
-
-    Prints dictionary keys and values as the following format. For:
-    {
-        "Ben": 78,
-        "Hen": 88,
-        "Natan": 99,
-        "Efraim": 65,
-        "Rachel": 95
-    }
-
-    The output will be:
-
-    Key     Value
-    -------------
-    Ben     78
-    Hen     88
-    Natan   99
-    Efraim  65
-    Rachel  95
-
-    :param some_dict:
-    :return:
-    """
-
-    return None
+    table=''
+    for name in some_dict:
+        some_dict[name]=str(some_dict[name])
+        table+=f"{name:<10}"+some_dict[name]+'\n'
+    return table
 
 
 def merge_dicts(dict1, dict2):
-    """
-    1 Kata
-
-    This functions merges dict2's keys and values into dict1, and returns dict1
-
-    e.g.
-    dict1 = {'a': 1}
-    dict2 = {'b': 2}
-
-    The results will by
-    dict1 = {'a': 1, 'b': 2}
-
-    :param dict1:
-    :param dict2:
-    :return:
-    """
+    for key in dict2:
+        dict1[key]=dict2[key]
     return dict1
 
 
 def seven_boom(n):
-    """
-    1 Kata
-
-    This functions returns a list of all "Booms" for a 7-boom play starting from 1 to n
-
-    e.g. For n = 30
-    The return value will be [7, 14, 17, 21, 27, 28]
-
-    :param n: int. The last number for count for a 7-boom play
-    :return: list of integers
-    """
-    return None
-
+    list_num=list(range(1,n))
+    seven_boom_list=[]
+    for num in list_num:
+        if num%7==0:
+            seven_boom_list.append(num)
+            continue
+        checking_num=list(str(num))
+        for digit in checking_num:
+            int_digit=int(digit)
+            if int_digit==7:
+                  seven_boom_list.append(num)
+    return seven_boom_list  
 
 def caesar_cipher(str_to_encrypt):
-    """
-    2 Kata
+    encrypt=''
+    lower_str='abcdefghijklmnopqrstuvwxyz'
+    upper_str='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    for char in str_to_encrypt:
+        if char==' ':
+            encrypt+=char
+        elif char in lower_str:
+            index_lower=(lower_str.index(char)+3)%26
+            encrypt+=lower_str[index_lower]
+        elif char in upper_str:
+            index_upper=(upper_str.index(char)+3)%26
+            encrypt+=upper_str[index_upper]
+    return encrypt
 
-    This function encrypts the given string according to caesar cipher (a - d, b - e, ..., y - b, z - c etc...).
-    Spaces remain as they are. You can assume the string contain a-z and A-Z chars only.
-
-    e.g.
-    Fly Me To The Moon -> Iob Ph Wr Wkh Prrq
-
-    :return:
-    """
-    return None
 
 
 def sum_of_digits(digits_str):
-    """
-    1 Kata
+    sum=0
+    for digit in digits_str:
+        int_digit=int(digit)
+        sum+=int_digit
+    return sum
 
-    Calculates the sum of digits in a string (you can assume the input is a string containing numeric digits only)
-
-    e.g.
-    '2524' -> 13
-    '' -> 0
-    '00232' -> 7
-
-
-    :param digits_str: str of numerical digits only
-    :return: int representing the sum of digits
-    """
-    return None
 
 
 if __name__ == '__main__':
@@ -256,77 +173,77 @@ if __name__ == '__main__':
     print(sum_of_element([1, 2]))
     print(sum_of_element([1, 3]))
     print(sum_of_element([4, 5, 6]))
-    #
+    
     print('\nverbing:\n--------------------')
     print(verbing('walk'))
     print(verbing('swimming'))
     print(verbing('do'))
-    #
+    
     print('\nwords_concatenation:\n--------------------')
     print(words_concatenation(['take', 'me', 'home']))
-    #
+    
     print('\nreverse_words_concatenation:\n--------------------')
     print(reverse_words_concatenation(['take', 'me', 'home']))
-    #
+    
     print('\nis_unique_string:\n--------------------')
     print(is_unique_string('aasdssdsederd'))
     print(is_unique_string('12345tgbnh'))
-    #
+    
     print('\nlist_diff:\n--------------------')
     print(list_diff([1, 2, 3, 8, 77, 0]))
-    #
+    
     print('\nprime_number:\n--------------------')
     print(prime_number(5))
     print(prime_number(22))
 
-    #
+    
     print('\npalindrome_num:\n--------------------')
     print(palindrome_num(12221))
     print(palindrome_num(577))
 
-    #
-    # print('\npair_match:\n--------------------')
-    # print(pair_match(
-    #     {
-    #         "John": 20,
-    #         "Abraham": 45
-    #     },
-    #     {
-    #         "July": 18,
-    #         "Kim": 26
-    #     }
-    # ))
-    #
-    # print('\nbad_average:\n--------------------')
-    # print(bad_average(1, 2, 3))
-    #
-    # print('\nbest_student:\n--------------------')
-    # print(best_student({
-    #     "Ben": 78,
-    #     "Hen": 88,
-    #     "Natan": 99,
-    #     "Efraim": 65,
-    #     "Rachel": 95
-    # }))
-    #
-    # print('\nprint_dict_as_table:\n--------------------')
-    # print(print_dict_as_table({
-    #     "Ben": 78,
-    #     "Hen": 88,
-    #     "Natan": 99,
-    #     "Efraim": 65,
-    #     "Rachel": 95
-    # }))
-    #
-    # print('\nmerge_dicts:\n--------------------')
-    # print(merge_dicts({'a': 1}, {'b': 2}))
-    #
-    # print('\nseven_boom:\n--------------------')
-    # print(seven_boom(30))
-    #
-    # print('\ncaesar_cipher:\n--------------------')
-    # print(caesar_cipher('Fly Me To The Moon'))
-    #
-    # print('\nsum_of_digits:\n--------------------')
-    # print(sum_of_digits('1223432'))
+    
+    print('\npair_match:\n--------------------')
+    print(pair_match(
+        {
+             "John": 20,
+             "Abraham": 45
+         },
+         {
+             "July": 18,
+             "Kim": 26
+         }
+     ))
+    
+    print('\nbad_average:\n--------------------')
+    print(bad_average(1, 2, 3))
+    
+    print('\nbest_student:\n--------------------')
+    print(best_student({
+         "Ben": 78,
+         "Hen": 88,
+         "Natan": 99,
+         "Efraim": 65,
+         "Rachel": 95
+     }))
+    
+    print('\nprint_dict_as_table:\n--------------------')
+    print(print_dict_as_table({
+         "Ben": 78,
+         "Hen": 88,
+         "Natan": 99,
+         "Efraim": 65,
+         "Rachel": 95
+     }))
+    
+    print('\nmerge_dicts:\n--------------------')
+    print(merge_dicts({'a': 1}, {'b': 2}))
+    
+    print('\nseven_boom:\n--------------------')
+    print(seven_boom(30))
+    
+    print('\ncaesar_cipher:\n--------------------')
+    print(caesar_cipher('Fly Me To The Moon'))
+    
+    print('\nsum_of_digits:\n--------------------')
+    print(sum_of_digits('1223432'))
 
