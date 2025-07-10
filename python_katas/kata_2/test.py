@@ -8,7 +8,7 @@ from datetime import datetime
 from python_katas.kata_2 import questions
 from python_katas.utils import unittest_runner
 
-testers = ['ofri','denis','ron']
+testers = ['roee', 'david', 'tal gold']
 
 class TestValidParentheses(unittest.TestCase):
     """
