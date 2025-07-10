@@ -87,7 +87,7 @@ class TestPrimeNumber(unittest.TestCase):
 class TestPalindromeNum(unittest.TestCase):
 
      def test_TestPalindromeNum(self):
-        num = 2
+        num = 424
         expected = True
         self.assertEqual(questions.pair_match(num), expected)
 
